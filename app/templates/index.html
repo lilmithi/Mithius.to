@@ -3,7 +3,7 @@
 <a href="/" class="p-4 border-b border-blue-500">Browse</a>
 {% endblock %} {% block show_layout %}
 <div id="home">Home layout</div>
-<ul class="flex gap-3 items-center justify-around">
+<ul class="grid grid-cols-3 md:grid-cols-6 gap-2 justify-items-center">
   {{macro.displayTopCards('movie')}}
 </ul>
 {% endblock %}
