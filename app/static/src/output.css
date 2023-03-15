@@ -690,3 +690,13 @@ video {
     padding-right: 1.5rem;
   }
 }
+
+@media (min-width: 1024px) {
+  .lg\:flex-1 {
+    flex: 1 1 0%;
+  }
+
+  .lg\:place-content-center {
+    place-content: center;
+  }
+}
