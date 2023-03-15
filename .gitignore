@@ -1,3 +1,4 @@
 virtual/
 instance/
+node_modules/
 *.pyc
