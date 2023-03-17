@@ -1,8 +1,6 @@
 from app import app
 from flask import render_template, redirect, url_for
 
-# type = "movies"
-
 @app.route('/')
 def index():
     title = "Hello World!"
