@@ -1,9 +1,10 @@
-{% extends 'base.html' %} {% import 'macro.html' as macro %} {% block title
-%} Series {% endblock %} {% block series_tab %}
+{% extends 'base.html' %} {% import 'macro.html' as macro %} {% block title %}
+Series {% endblock %} {% block series_tab %}
 <a href="/series" class="p-4 border-b border-blue-500">Series</a>
 {% endblock %} {% block show_layout %}
 <div id="series">Series/movies layout</div>
 <ul class="grid grid-cols-3 md:grid-cols-6 gap-2 justify-items-center">
   {{macro.displayTopCards('series')}}
 </ul>
+<div>{{macro.main_section('series')}}</div>
 {% endblock %}
