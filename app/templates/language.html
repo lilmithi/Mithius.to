@@ -1,0 +1,14 @@
+{% extends 'show-main.html' %} {% block recent_tab %}
+<a href="/{{type}}" class="mini-unselected-tab">Recent</a>
+
+{% endblock %} {% block language_tab %}
+<a
+  href="/{{type}}-language"
+  class="mini-selected-tab"
+  >Language</a
+>
+
+{% endblock %} {% block show_type %}
+<h2>{{type}} Language</h2>
+
+{% endblock %}
