@@ -1,10 +1,50 @@
-{% extends 'base.html' %} {% import 'macros.html' as macro %} {% block home_tab
-%}
-<a href="/" class="p-4 border-b border-blue-500">Browse</a>
-{% endblock %} {% block show_layout %}
-<div id="home">Home layout</div>
-<ul class="grid grid-cols-3 md:grid-cols-6 gap-2 justify-items-center">
-  {{macro.displayTopCards('movie')}}
-</ul>
-<div>{{macro.main_section('Home')}}</div>
+{% extends 'show-main.html' %}
+{% set navigation_bar = ['recent', 'popular', 'genre', 'year', 'az', 'language'] %}
+{% set active_page = active_page|default('recent') %}
+
+{% block home_tab %}
+<a href="/" class="p-4 border-b border-blue-500 capitalize">Browse</a>
 {% endblock %}
+{% block nav %}
+{% endblock %}
+{% block show_type %}
+<div class="flex justify-between flex-wrap gap-5 px-3">
+  <div class="border flex flex-col flex-1 p-3">
+    <nav
+    id="navigation"
+      class="flex sm:min-w-[264px] md:min-w-[453px] flex-wrap items-center justify-start gap-4"
+    >
+    {% for item in navigation_bar %}
+    {% if item == "recent" %}
+    <a href="/" {% if item == active_page %} class="py-1 text-sm px-2 bg-blue-600 text-white capitalize" {% else %} class = "border py-1 text-sm px-2 capitalize" {% endif %}>{{item.title()}}</a>
+    {% elif item == "az" %}
+    <a href="/trends-az" {% if item == active_page %} class="py-1 text-sm px-2 bg-blue-600 text-white capitalize" {% else %} class = "border py-1 text-sm px-2 capitalize" {% endif %}>A-Z</a>
+    {% else %}
+    <a href="/trends-{{item}}" {% if item == active_page %} class="py-1 text-sm px-2 bg-blue-600 text-white capitalize" {% else %} class = "border py-1 text-sm px-2 capitalize" {% endif %}>{{item.title()}}</a>
+    {% endif %}
+    {% endfor %}
+    </nav>
+    <hr class="my-3 border-2" />
+   {% block trends %}
+   Trends - Recent
+   {% endblock %}
+  </div>
+ 
+  <div class="border p-3 pb-2 h-max">
+    <p>
+      Have a movie or TV show you'd like to see on Mithius? Tell us about it at
+    </p>
+    <span>
+      <a
+        href="https://github.com/lilmithi"
+        class="text-blue-500 hover:text-blue-400"
+        >https://github.com/lilmithi</a
+      ></span
+    >
+
+    <hr class="my-1 border-2" />
+  </div>
+
+  {% endblock %}
+</div>
+
