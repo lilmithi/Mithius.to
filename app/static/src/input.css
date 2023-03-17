@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mini-unselected-tab{
+    @apply py-1 px-2 text-sm hover:bg-gray-100
+}
+.mini-selected-tab{
+    @apply border border-transparent py-1 px-2 bg-yellow-500 rounded rounded-b-none text-sm text-white
+}
