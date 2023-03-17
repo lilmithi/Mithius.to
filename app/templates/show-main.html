@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% import 'macros.html' as macro %} {% block title %}
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
+{% set my_navigation_bar = ['recent', 'popular', 'genre', 'year', 'az', 'language'] %}
+{% set my_active_page = my_active_page|default('recent') %}
+
+{% block title %}
 {{type.title()}} {% endblock %} {% block series_tab %} {% if type == "series" %}
 <a href="/series" class="p-4 border-b border-blue-500 capitalize">Series</a>
 {% else %}
@@ -7,13 +11,23 @@
   class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
   >Series</a
 >
-{% endif %} {% endblock %} {% block movies_tab %} {% if type == "movies" %}
+{% endif %} {% endblock %} {% block movies_tab %} {% if type == "movies" and not
+is_browse %}
 <a href="/movies" class="p-4 border-b border-blue-500 capitalize">Movies</a>
 {% else %}
 <a
   href="/movies"
   class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
   >Movies</a
+>
+{% endif %} {% endblock %} {% block home_tab %} {% if type == "movies" and
+is_browse %}
+<a href="/" class="p-4 border-b border-blue-500 capitalize">Browse</a> {% else
+%}
+<a
+  href="/"
+  class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
+  >Browse</a
 >
 {% endif %} {% endblock %} {% block show_layout %}
 <ul
@@ -24,28 +38,22 @@
 </ul>
 <hr />
 <div class="my-4">
-  <nav class="flex items-center gap-2 justify-start">
-    {% block recent_tab %}
-    <a href="/{{type}}" class="mini-selected-tab">Recent</a>
+  {% block nav %}
 
-    {% endblock %} {% block popular_tab %}
-    <a href="/{{type}}-popular" class="mini-unselected-tab">Popular</a>
-
-    {% endblock %} {% block genre_tab %}
-    <a href="/{{type}}-genre" class="mini-unselected-tab">Genre</a>
-
-    {% endblock %} {% block year_tab %}
-    <a href="/{{type}}-year" class="mini-unselected-tab">Year</a>
-
-    {% endblock %} {% block az_tab %}
-    <a href="/{{type}}-az" class="mini-unselected-tab">A-Z</a>
-
-    {% endblock %} {% block language_tab %}
-    <a href="/{{type}}-language" class="mini-unselected-tab">Language</a>
-
-    {% endblock %}
+  <nav class="flex flex-wrap items-center gap-2 justify-start px-3">
+    {% for item in my_navigation_bar %}
+    {% if item == "recent" %}
+    <a href="/{{type}}" {% if item == my_active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>{{item.title()}}</a>
+    {% elif item == "az" %}
+    <a href="/{{type}}-az" {% if item == my_active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>A-Z</a>
+    {% else %}
+    <a href="/{{type}}-{{item}}" {% if item == my_active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>{{item.title()}}</a>
+    {% endif %}
+    {% endfor %}
+    
   </nav>
   <hr class="bg-yellow-500 h-[1px] border-0" />
+  {% endblock %}
 </div>
 <div>{% block show_type %} Recent {{type}} {% endblock %}</div>
 {% endblock %}
