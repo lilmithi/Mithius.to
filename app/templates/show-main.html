@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% import 'macros.html' as macro %}
-{% set my_navigation_bar = ['recent', 'popular', 'genre', 'year', 'az', 'language'] %}
-{% set my_active_page = my_active_page|default('recent') %}
+{% set navigation_bar = ['recent', 'popular', 'genre', 'year', 'az', 'language'] %}
+{% set active_page = active_page|default('recent') %}
 
 {% block title %}
 {{type.title()}} {% endblock %} {% block series_tab %} {% if type == "series" %}
@@ -37,17 +37,17 @@ is_browse %}
   {{macro.displayTopCards("movie")}} {% endif %}
 </ul>
 <hr />
-<div class="my-4">
+<div class="mt-4 mb-2">
   {% block nav %}
 
   <nav class="flex flex-wrap items-center gap-2 justify-start px-3">
-    {% for item in my_navigation_bar %}
+    {% for item in navigation_bar %}
     {% if item == "recent" %}
-    <a href="/{{type}}" {% if item == my_active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>{{item.title()}}</a>
+    <a href="/{{type}}" {% if item == active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>{{item.title()}}</a>
     {% elif item == "az" %}
-    <a href="/{{type}}-az" {% if item == my_active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>A-Z</a>
+    <a href="/{{type}}-az" {% if item == active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>A-Z</a>
     {% else %}
-    <a href="/{{type}}-{{item}}" {% if item == my_active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>{{item.title()}}</a>
+    <a href="/{{type}}-{{item}}" {% if item == active_page %} class="mini-selected-tab" {% else %} class = "mini-unselected-tab" {% endif %}>{{item.title()}}</a>
     {% endif %}
     {% endfor %}
     
@@ -55,5 +55,5 @@ is_browse %}
   <hr class="bg-yellow-500 h-[1px] border-0" />
   {% endblock %}
 </div>
-<div>{% block show_type %} Recent {{type}} {% endblock %}</div>
+<div class="px-3">{% block show_type %} Recent {{type}} {% endblock %}</div>
 {% endblock %}
