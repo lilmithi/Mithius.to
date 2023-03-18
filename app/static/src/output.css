@@ -536,9 +536,12 @@ video {
   margin-bottom: 0.75rem;
 }
 
-.my-4 {
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mt-4 {
   margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .block {
