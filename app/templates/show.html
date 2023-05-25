@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='src/output.css')}}"
+    />
+    <title>Document</title>
+  </head>
+  <body class="2xl:container mx-auto">
+    <div
+      class="w-full h-max grid grid-cols-1 md:grid-cols-2 justify-items-center gap-2 md:gap-4"
+    >
+      <div class="w-full col-span-1 h-auto show-image">
+        <img
+          src="{{show.imageurl}}"
+          alt="{{show.title}}"
+          class="md:ml-auto md:mx-0 mx-auto"
+        />
+      </div>
+      <div class="col-span-1 h-auto p-2 md:p-3">
+        <h1 class="font-mono uppercase font-bold text-xl md:text-2xl my-2">
+          {{show.title}}
+        </h1>
+        <p class="font-mono">{{show.overview}}</p>
+        <p class="my-4 italic font-semibold">
+          Language: <span class="font-normal">{{show.language}}</span>
+        </p>
+        {% if show.origin_country %}
+        <p class="my-4 italic font-semibold">
+          Origin country:
+          <span class="font-normal">{{show.origin_country}}</span>
+        </p>
+        {% endif %} {% if show.release_date %}
+        <p class="my-4 italic font-semibold">
+          Release date: <span class="font-normal">{{show.release_date}}</span>
+        </p>
+        {% endif %}
+        <p class="my-4 italic font-semibold">
+          Popularity: <span class="font-normal">{{show.popularity}}</span>
+        </p>
+        <p class="my-4 italic font-semibold">
+          Rating: <span class="font-normal">{{show.rating}}</span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

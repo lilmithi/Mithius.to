@@ -2,9 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-.mini-unselected-tab{
-    @apply py-1 px-2 text-sm hover:bg-gray-100
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.mini-selected-tab{
-    @apply border border-transparent py-1 px-2 bg-yellow-500 rounded rounded-b-none text-sm text-white
+
+.mini-unselected-tab {
+  @apply py-1 px-2 text-sm hover:bg-gray-100;
+}
+.mini-selected-tab {
+  @apply border border-transparent py-1 px-2 bg-yellow-500 rounded rounded-b-none text-sm text-white;
+}
+.show-image {
+  background: rgb(45, 46, 47);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(45, 46, 47, 1) 43%,
+    rgba(62, 63, 67, 1) 73%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(45, 46, 47, 1) 43%,
+    rgba(62, 63, 67, 1) 73%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(45, 46, 47, 1) 43%,
+    rgba(62, 63, 67, 1) 73%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2d2e2f",endColorstr="#3e3f43",GradientType=1);
 }

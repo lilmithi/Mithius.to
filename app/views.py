@@ -1,23 +1,40 @@
 from app import app
 from flask import render_template, redirect, url_for
+from .requests import get_movies, get_series, get_movie, get_tv_show
 
+popular_movies=get_movies("popular")
 @app.route('/')
 def index():
-    title = "Hello World!"
-    return render_template("index.html",title = title, type = "movies", is_browse = True)
+    # Getting popular movies
+    popular_movies = get_movies("popular")
+    return redirect(url_for())
+    return render_template("index.html",type = "movies", is_browse = True, popular_movies = popular_movies)
 
 # Movies
 
 @app.route('/movies')
 def movies():
-    return render_template("show-main.html", type = "movies")
+    # Getting popular movies
+    popular_movies = get_movies("popular")
+    return render_template("show-main.html", type = "movies", popular_movies = popular_movies)
 
-@app.route('/movie/<int:movie_id>')
-def movie(movie_id):
+@app.route('/movie/<id>')
+def movie(id):
     '''
     View movie page function that returns the movie details page and it's data
     '''
-    pass
+    show = get_movie(id)
+    title = f'{show.title}'
+    return render_template('show.html', show = show, title = title, type = "movies")
+
+@app.route('/series/<id>')
+def tv_show(id):
+    '''
+    View tv page function that returns the tv details page and it's data
+    '''
+    show = get_tv_show(id)
+    title = f'{show.title}'
+    return render_template('show.html', show = show, title = title, type = "series")
 
 @app.route('/movies-popular')
 def popular_movies():
@@ -58,14 +75,9 @@ def movies_year():
 
 @app.route('/series')
 def series():
-    return render_template("show-main.html", type = "series")
-
-@app.route('/series/<int:tv_id>')
-def tv_show(tv_id):
-    '''
-    View tv show page function that returns the tv details page and it's data
-    '''
-    pass
+    # Getting popular series
+    popular_series = get_series("popular")
+    return render_template("show-main.html", type = "series", popular_series = popular_series)
 
 
 @app.route('/series-popular')

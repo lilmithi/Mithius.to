@@ -1,7 +1,7 @@
 {% extends 'show-main.html' %}
 {% set navigation_bar = ['recent', 'popular', 'genre', 'year', 'az', 'language'] %}
 {% set active_page = active_page|default('recent') %}
-
+{% set popular_movies = popular_movies %}
 {% block home_tab %}
 <a href="/" class="p-4 border-b border-blue-500 capitalize">Browse</a>
 {% endblock %}

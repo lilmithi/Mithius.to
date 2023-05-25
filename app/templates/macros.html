@@ -1,15 +1,31 @@
-{% macro displayTopCards(type) %} {% if type == 'movie' %}
-<li class="col-span-1 p-4 border">movie 1</li>
-<li class="col-span-1 p-4 border">movie 2</li>
-<li class="col-span-1 p-4 border">movie 3</li>
-<li class="col-span-1 p-4 border">movie 4</li>
-<li class="col-span-1 p-4 border">movie 5</li>
-<li class="col-span-1 p-4 border">movie 6</li>
+{% macro displayTopCards(category, type) %} {% for item in range(7) %}
+{% if type == "movies" %}
+<a href="/movie/{{category[item].id}}">
+  <li class="relative text-sm col-span-1 md:max-w-[165px] overflow-hidden rounded">
+    <img
+      src="{{category[item].imageurl}}"
+      alt="{{category[item].title}}"
+      title="{{category[item].title}}"
+      class="w-full object-cover object-center hover:brightness-75"
+    />
+    <p class="absolute bottom-0 w-full p-2 bg-black opacity-70 text-center text-white">
+      {{category[item].title}}
+    </p>
+  </li>
+</a>
 {% else %}
-<li class="col-span-1 p-4 border">series 1</li>
-<li class="col-span-1 p-4 border">series 2</li>
-<li class="col-span-1 p-4 border">series 3</li>
-<li class="col-span-1 p-4 border">series 4</li>
-<li class="col-span-1 p-4 border">series 5</li>
-<li class="col-span-1 p-4 border">series 6</li>
-{% endif %} {% endmacro %}
+<a href="/series/{{category[item].id}}">
+  <li class="relative text-sm col-span-1 md:max-w-[165px] overflow-hidden rounded">
+    <img
+      src="{{category[item].imageurl}}"
+      alt="{{category[item].title}}"
+      title="{{category[item].title}}"
+      class="w-full object-cover object-center hover:brightness-75"
+    />
+    <p class="absolute bottom-0 w-full p-2 bg-black opacity-70 text-center text-white">
+      {{category[item].title}}
+    </p>
+  </li>
+</a>
+{% endif %}
+{% endfor %} {% endmacro %}

@@ -8,7 +8,7 @@
 {% else %}
 <a
   href="/series"
-  class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
+  class="p-4 border-b border-transparent hover:border-b hover:text-gray-500"
   >Series</a
 >
 {% endif %} {% endblock %} {% block movies_tab %} {% if type == "movies" and not
@@ -17,7 +17,7 @@ is_browse %}
 {% else %}
 <a
   href="/movies"
-  class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
+  class="p-4 border-b border-transparent hover:border-b hover:text-gray-500"
   >Movies</a
 >
 {% endif %} {% endblock %} {% block home_tab %} {% if type == "movies" and
@@ -26,16 +26,18 @@ is_browse %}
 %}
 <a
   href="/"
-  class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
+  class="p-4 border-b border-transparent hover:border-b hover:text-gray-500"
   >Browse</a
 >
 {% endif %} {% endblock %} {% block show_layout %}
+{% block top_cards %}
 <ul
-  class="grid grid-cols-3 md:grid-cols-6 gap-2 justify-items-center py-4 bg-gray-50"
+class="grid grid-cols-3 justify-items-center md:grid-cols-7 gap-1 justify-around items-center py-4 px-2 bg-gray-50"
 >
-  {% if type == "series" %} {{macro.displayTopCards("series")}} {% else %}
-  {{macro.displayTopCards("movie")}} {% endif %}
+{% if type == "series" %} {{macro.displayTopCards(popular_series, "series")}} {% else %}
+{{macro.displayTopCards(popular_movies, "movies")}} {% endif %}
 </ul>
+{% endblock %}
 <hr />
 <div class="mt-4 mb-2">
   {% block nav %}

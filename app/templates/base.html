@@ -31,24 +31,24 @@
           </button>
         </form>
       </div>
-      <ul class="flex justify-start gap-5 items-center">
+      <ul class="flex flex-wrap text-sm md:text-base justify-start gap-2 md:gap-5 items-center">
         {% block home_tab %}
         <a
           href="/"
-          class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
+          class="p-4 py-2 border-b border-transparent hover:border-b hover:text-gray-500"
           >Browse</a
         >
         {% endblock %} {% block movies_tab %}
         <a
           href="/movies"
-          class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
+          class="p-4 py-2 border-b border-transparent hover:border-b hover:text-gray-500"
           >Movies</a
         >
 
         {% endblock %} {% block series_tab %}
         <a
           href="/series"
-          class="p-4 border-b border-transparent hover:border-b hover:border-b-blue-500"
+          class="p-4 py-2 border-b border-transparent hover:border-b hover:text-gray-500"
           >Series</a
         >
         {% endblock %}

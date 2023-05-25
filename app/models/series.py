@@ -1,7 +1,10 @@
-from show import Show
+# from show import Show
+from app.models.show import Show
+
 class Series(Show):
     '''
     Series child class to create series objects
     '''
-    def __init__(self, id, genre, title, language, imageurl, media_type, release_date, popularity, overview, rating) -> None:
-        super().__init__(id, genre, title, language, imageurl, media_type, release_date, popularity, overview, rating)
+    def __init__(self, id, genre, title, origin_country, language, imageurl, release_date, popularity, overview, rating) -> None:
+        super().__init__(id, genre, title, language, imageurl, release_date, popularity, overview, rating)
+        self.origin_country = origin_country

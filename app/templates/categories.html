@@ -1,4 +1,11 @@
-{% extends 'show-main.html' %} {% set active_page = (category) %} {% block show_type %}
+{% extends 'show-main.html' %} {% set active_page = (category) %} {% block
+show_type %}
 <h2>{{type}} {{category}}</h2>
-
-{% endblock %}
+{% block top_cards %} 
+<ul
+class="grid grid-cols-3 justify-items-center md:grid-cols-7 gap-1 justify-around items-center py-4 px-2 bg-gray-50"
+>
+{% if category == "series" %} {{macro.displayTopCards(popular_series, "series")}} {% else %}
+{{macro.displayTopCards(popular_movies, "movies")}} {% endif %}
+</ul>
+{% endblock %} {% endblock %}
